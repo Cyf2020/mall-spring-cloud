@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <parent>
+    <artifactId>mall</artifactId>
+    <groupId>com.cyf.mall</groupId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+  <!-- 公共依赖,需要在每个模块都导入-->
+  <artifactId>mall-common</artifactId>
+  <dependencies>
+
+    <!--  mybatis-plus 需要专门导入springboot版 -->
+    <dependency>
+      <groupId>com.baomidou</groupId>
+      <artifactId>mybatis-plus-boot-starter</artifactId>
+      <version>3.3.1</version>
+    </dependency>
+
+    <!-- Lombok -->
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>1.18.4</version>
+    </dependency>
+
+    <!-- httpcore:解决com.cyf.common.utils的R类依赖 -->
+    <dependency>
+      <groupId>org.apache.httpcomponents</groupId>
+      <artifactId>httpcore</artifactId>
+      <version>4.4.13</version>
+    </dependency>
+
+    <!--解决xss-->
+    <dependency>
+      <groupId>commons-lang</groupId>
+      <artifactId>commons-lang</artifactId>
+      <version>2.6</version>
+    </dependency>
+
+    <!--servlet依赖-->
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>servlet-api</artifactId>
+      <version>2.5</version>
+      <!--打包时不带上-->
+      <scope>provided</scope>
+    </dependency>
+
+    <!--mysql驱动是所有模块公共的,放在这里-->
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>8.0.19</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.alibaba.cloud</groupId>
+      <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+    </dependency>
+
+    <!--服务注册发现-->
+    <dependency>
+      <groupId>com.alibaba.cloud</groupId>
+      <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>com.alibaba.cloud</groupId>
+      <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+    </dependency>
+  </dependencies>
+
+    <dependencyManagement>
+      <dependencies>
+        <dependency>
+          <groupId>com.alibaba.cloud</groupId>
+          <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+          <version>2.2.1.RELEASE</version>
+          <type>pom</type>
+          <scope>import</scope>
+        </dependency>
+      </dependencies>
+    </dependencyManagement>
+
+</project>
