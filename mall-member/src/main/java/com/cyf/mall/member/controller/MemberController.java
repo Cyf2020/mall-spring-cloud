@@ -3,6 +3,7 @@ package com.cyf.mall.member.controller;
 import com.cyf.common.utils.PageUtils;
 import com.cyf.common.utils.R;
 import com.cyf.mall.member.entity.MemberEntity;
+import com.cyf.mall.member.feign.CouponFeignService;
 import com.cyf.mall.member.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -24,6 +25,29 @@ import java.util.Map;
 public class MemberController {
     @Autowired
     private MemberService memberService;
+
+    //测试feign的代码
+    @Autowired
+    private CouponFeignService couponFeignService;
+
+    @RequestMapping("/coupons")
+    public R getCouponList(){
+        MemberEntity memberEntity = new MemberEntity();
+        memberEntity.setNickname("张三");
+        R memberCoupons = couponFeignService.memberCoupons();
+        return R.ok().put("member",memberEntity).put("coupons",memberCoupons.get("coupons"));
+    }
+
+//    //测试nacos-config的代码
+//    @Value("${my.username}")
+//    private String name;
+//    @Value("${my.password}")
+//    private Integer password;
+//    @RequestMapping("/config")
+//    public R getConfig(){
+//        return R.ok().put("name",name).put("password",password);
+//    }
+
 
     /**
      * 列表
